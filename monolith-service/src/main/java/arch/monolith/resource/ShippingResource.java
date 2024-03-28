@@ -1,5 +1,7 @@
-package arch.monolith.shipping;
+package arch.monolith.resource;
 
+import arch.monolith.service.ShippingService;
+import arch.monolith.entity.Shipping;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;

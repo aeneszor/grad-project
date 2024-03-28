@@ -1,13 +1,11 @@
-package arch.monolith.store;
+package arch.monolith.service;
 
 
-import arch.monolith.catalog.Catalog;
-import arch.monolith.catalog.CatalogService;
-import arch.monolith.inventory.Inventory;
-import arch.monolith.inventory.InventoryService;
-import arch.monolith.product.Product;
-import arch.monolith.shipping.Shipping;
-import arch.monolith.shipping.ShippingService;
+import arch.monolith.entity.Catalog;
+import arch.monolith.entity.Inventory;
+import arch.monolith.entity.Product;
+import arch.monolith.entity.Shipping;
+import arch.monolith.entity.Store;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

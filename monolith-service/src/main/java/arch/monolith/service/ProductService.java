@@ -1,5 +1,6 @@
-package arch.monolith.product;
+package arch.monolith.service;
 
+import arch.monolith.entity.Product;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

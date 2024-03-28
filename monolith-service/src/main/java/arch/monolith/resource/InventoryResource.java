@@ -1,5 +1,7 @@
-package arch.monolith.inventory;
+package arch.monolith.resource;
 
+import arch.monolith.entity.Inventory;
+import arch.monolith.service.InventoryService;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;

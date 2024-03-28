@@ -1,9 +1,11 @@
-package arch.monolith.store;
+package arch.monolith.resource;
 
-import arch.monolith.catalog.Catalog;
-import arch.monolith.inventory.Inventory;
-import arch.monolith.product.Product;
-import arch.monolith.shipping.Shipping;
+import arch.monolith.entity.Catalog;
+import arch.monolith.entity.Inventory;
+import arch.monolith.entity.Product;
+import arch.monolith.service.StoreService;
+import arch.monolith.entity.Shipping;
+import arch.monolith.entity.Store;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;

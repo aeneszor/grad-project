@@ -1,5 +1,7 @@
-package arch.monolith.catalog;
+package arch.monolith.resource;
 
+import arch.monolith.entity.Catalog;
+import arch.monolith.service.CatalogService;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
