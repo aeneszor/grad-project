@@ -3,8 +3,10 @@ package arch.monolith.store;
 
 import arch.monolith.catalog.Catalog;
 import arch.monolith.catalog.CatalogService;
+import arch.monolith.inventory.Inventory;
 import arch.monolith.inventory.InventoryService;
-import arch.monolith.product.ProductService;
+import arch.monolith.product.Product;
+import arch.monolith.shipping.Shipping;
 import arch.monolith.shipping.ShippingService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -33,6 +35,11 @@ public class StoreService {
     }
 
     @Transactional
+    public Store findStoreById(Long id){
+        return Store.findById(id);
+    }
+
+    @Transactional
     public List<Catalog> findStoreCatalogsById(Long storeId) {
         Store store = Store.findById(storeId);
         List<Long> catalogIDs = store.catalogIDs;
@@ -44,8 +51,37 @@ public class StoreService {
     }
 
     @Transactional
-    public Store findStoreById(Long id){
-        return Store.findById(id);
+    public List<Inventory> findStoreInventoriesById(Long storeId) {
+        Store store = Store.findById(storeId);
+        List<Long> inventoryIDs = store.inventoryIDs;
+        List<Inventory> inventoryList = new ArrayList<>();
+        for (Long inventoryID : inventoryIDs) {
+            inventoryList.add(inventoryService.findInventoryById(inventoryID));
+        }
+        return inventoryList;
+    }
+
+    @Transactional
+    public List<Product> findStoreProductsById(Long storeId) {
+        Store store = Store.findById(storeId);
+        List<Long> inventoryIDs = store.inventoryIDs;
+        List<Product> productList = new ArrayList<>();
+        for (Long inventoryID : inventoryIDs) {
+            Long productID = inventoryService.findInventoryById(inventoryID).productID;
+            productList.add(inventoryService.getProductService().findProductById(productID));
+        }
+        return productList;
+    }
+
+    @Transactional
+    public List<Shipping> findStoreShippingById(Long storeId) {
+        Store store = Store.findById(storeId);
+        List<Long> shippingIDs = store.shippingIDs;
+        List<Shipping> shippingList = new ArrayList<>();
+        for (Long shippingID : shippingIDs) {
+            shippingList.add(shippingService.findShippingById(shippingID));
+        }
+        return shippingList;
     }
 
     public Store persistStore(@Valid Store store) {

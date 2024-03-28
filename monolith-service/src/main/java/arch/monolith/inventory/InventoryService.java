@@ -1,6 +1,8 @@
 package arch.monolith.inventory;
 
 
+import arch.monolith.product.Product;
+import arch.monolith.product.ProductService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -10,6 +12,16 @@ import java.util.List;
 @ApplicationScoped
 @Transactional
 public class InventoryService {
+
+    private final ProductService productService;
+
+    public ProductService getProductService() {
+        return productService;
+    }
+
+    public InventoryService(ProductService productService) {
+        this.productService = productService;
+    }
 
     @Transactional
     public List<Inventory> findAllInventories() {
@@ -28,8 +40,7 @@ public class InventoryService {
 
     public Inventory updateInventory(@Valid Inventory inventory) {
         Inventory entity = Inventory.findById(inventory.id);
-        entity.productId = inventory.productId;
-        entity.price = inventory.price;
+        entity.productID = inventory.productID;
         entity.numberOfProduct = inventory.numberOfProduct;
         return entity;
     }

@@ -29,7 +29,8 @@ public class ProductService {
         Product entity = Product.findById(product.id);
         entity.name = product.name;
         entity.rating = product.rating;
-        entity.catalogId = product.catalogId;
+        entity.price = product.price;
+        entity.catalogID = product.catalogID;
         return entity;
     }
 

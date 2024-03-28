@@ -1,6 +1,9 @@
 package arch.monolith.store;
 
 import arch.monolith.catalog.Catalog;
+import arch.monolith.inventory.Inventory;
+import arch.monolith.product.Product;
+import arch.monolith.shipping.Shipping;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -32,7 +35,7 @@ public class StoreResource {
 
     @GET
     @Path("/{id}")
-    public RestResponse<Store> getStore(@RestPath Long id) {
+    public RestResponse<Store> getStoreById(@RestPath Long id) {
         Store store = storeService.findStoreById(id);
         if (store != null) {
             logger.info("Found store " + store);
@@ -44,7 +47,8 @@ public class StoreResource {
     }
 
     @GET
-    @Path("/{id}/catalogs")
+
+    @Path("/catalogs/{id}")
     public RestResponse<List<Catalog>> getStoreCatalogs(@RestPath Long id) {
         List<Catalog> catalogList = storeService.findStoreCatalogsById(id);
         if (catalogList.get(0) != null) {
@@ -52,6 +56,45 @@ public class StoreResource {
             return RestResponse.ok(catalogList);
         } else {
             logger.info("No catalogs found with store id " + id);
+            return RestResponse.noContent();
+        }
+    }
+
+    @GET
+    @Path("/inventories/{id}")
+    public RestResponse<List<Inventory>> getStoreInventories(@RestPath Long id) {
+        List<Inventory> inventoryList = storeService.findStoreInventoriesById(id);
+        if (inventoryList.get(0) != null) {
+            logger.info("Found inventories of store id " + id);
+            return RestResponse.ok(inventoryList);
+        } else {
+            logger.info("No inventories found with store id " + id);
+            return RestResponse.noContent();
+        }
+    }
+
+    @GET
+    @Path("/products/{id}")
+    public RestResponse<List<Product>> getStoreProducts(@RestPath Long id) {
+        List<Product> productList = storeService.findStoreProductsById(id);
+        if (productList.get(0) != null) {
+            logger.info("Found products of store id " + id);
+            return RestResponse.ok(productList);
+        } else {
+            logger.info("No products found with store id " + id);
+            return RestResponse.noContent();
+        }
+    }
+
+    @GET
+    @Path("/shipping/{id}")
+    public RestResponse<List<Shipping>> getStoreShipping(@RestPath Long id) {
+        List<Shipping> shippingList = storeService.findStoreShippingById(id);
+        if (shippingList.get(0) != null) {
+            logger.info("Found shipping list of store id " + id);
+            return RestResponse.ok(shippingList);
+        } else {
+            logger.info("No shipping found with store id " + id);
             return RestResponse.noContent();
         }
     }

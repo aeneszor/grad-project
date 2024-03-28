@@ -8,16 +8,14 @@ import jakarta.persistence.Table;
 @Table(name="inventory")
 public class Inventory extends PanacheEntity {
 
-    public Long productId;
-    public Long price;
+    public Long productID;
     public Long numberOfProduct;
 
     @Override
     public String toString() {
         return "Inventory{" +
                 "id=" + id +
-                ", productId=" + productId +
-                ", price=" + price +
+                ", productID=" + productID +
                 ", numberOfProduct=" + numberOfProduct +
                 '}';
     }
