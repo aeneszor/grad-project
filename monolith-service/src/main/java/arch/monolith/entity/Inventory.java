@@ -9,6 +9,7 @@ import jakarta.persistence.Table;
 public class Inventory extends PanacheEntity {
 
     public Long productID;
+    public int price;
     public Long numberOfProduct;
 
     @Override
@@ -16,6 +17,7 @@ public class Inventory extends PanacheEntity {
         return "Inventory{" +
                 "id=" + id +
                 ", productID=" + productID +
+                ", price=" + price +
                 ", numberOfProduct=" + numberOfProduct +
                 '}';
     }

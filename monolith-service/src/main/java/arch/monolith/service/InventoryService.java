@@ -40,6 +40,7 @@ public class InventoryService {
     public Inventory updateInventory(@Valid Inventory inventory) {
         Inventory entity = Inventory.findById(inventory.id);
         entity.productID = inventory.productID;
+        entity.price = inventory.price;
         entity.numberOfProduct = inventory.numberOfProduct;
         return entity;
     }

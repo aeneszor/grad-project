@@ -10,7 +10,6 @@ public class Product extends PanacheEntity {
 
     public String name;
     public int rating;
-    public Long price;
     public Long catalogID;
 
     @Override
@@ -19,7 +18,6 @@ public class Product extends PanacheEntity {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", rating=" + rating +
-                ", price=" + price +
                 ", catalogID=" + catalogID +
                 '}';
     }
